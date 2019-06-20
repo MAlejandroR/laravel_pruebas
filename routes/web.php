@@ -12,12 +12,13 @@
  */
 
 
+Route::get("alumnos", 'C_Alumnos@mostrar');
+
 //Ruta por get a una url llamada principal que retorna una vista llamada
 //pagina_principal ubicada en resources/views (html)
 Route::get("principal", function () {
     return view("/pagina_principal");
-}
-);
+})->middleware("auth");
 
 //Ruta por get o post a un recurso llamado about
 //La vista que retorna estará en resources/views/prueba1/about.blade.php
@@ -78,3 +79,9 @@ Route::get("contacta_empresa", function() {
 Route::get("noticias_empresa", function() {
     return view("empresa/noticias");
 });
+Route::get("valor", 'Acciones@aleatorio');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
